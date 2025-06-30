@@ -3,114 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Triad Longevity Academy - Your Complete Health Transformation</title>
+    <title>Triad Longevity Academy - Dr. Obinna Eleweanya | Complete Health Transformation</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        .glass-effect {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
-        }
-        .feature-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        .pricing-card {
-            transition: all 0.3s ease;
-        }
-        .pricing-card:hover {
-            transform: translateY(-5px);
-        }
-        .modal {
-            backdrop-filter: blur(5px);
-        }
-        .StripeElement {
-            background-color: white;
-            height: 40px;
-            padding: 10px 12px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-            transition: box-shadow 150ms ease;
-        }
-        .StripeElement--focus {
-            box-shadow: 0 1px 3px 0 #cfd7df;
-        }
-        .StripeElement--invalid {
-            border-color: #fa755a;
-        }
-        .StripeElement--webkit-autofill {
-            background-color: #fefde5 !important;
-        }
-        .assessment-option {
-            transition: all 0.3s ease;
-        }
-        .assessment-option:hover {
-            background-color: #f3f4f6;
-            transform: translateX(5px);
-        }
-        .score-circle {
-            background: conic-gradient(from 0deg, #10b981, #3b82f6, #8b5cf6, #10b981);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            color: white;
-            font-weight: bold;
-            margin: 0 auto;
-        }
-        .loading-spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover:hover { transform: translateY(-5px); transition: transform 0.3s ease; }
+        .modal { backdrop-filter: blur(10px); }
+        .assessment-option:hover { background-color: #f3f4f6; }
+        .score-excellent { background: linear-gradient(135deg, #10b981, #059669); }
+        .score-good { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .score-needs-improvement { background: linear-gradient(135deg, #ef4444, #dc2626); }
     </style>
 </head>
 <body class="font-sans">
     <!-- Header -->
-    <header class="glass-effect fixed w-full top-0 z-50 shadow-lg">
+    <header class="bg-white bg-opacity-95 backdrop-blur-lg sticky top-0 z-50 shadow-lg">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
                 <img src="https://page1.genspark.site/v1/base64_upload/821b5c769d2fa4172a2430f17d958b18" alt="Triad Longevity Academy" class="w-12 h-12 rounded-full">
                 <h1 class="text-2xl font-bold text-gray-800">Triad Longevity Academy</h1>
             </div>
             <div class="flex space-x-4">
-                <button onclick="showLogin()" class="px-6 py-2 border-2 border-purple-600 text-purple-600 rounded-full hover:bg-purple-600 hover:text-white transition duration-300">
+                <button onclick="showModal('loginModal')" class="px-6 py-2 border-2 border-purple-600 text-purple-600 rounded-full hover:bg-purple-600 hover:text-white transition duration-300">
                     Sign In
                 </button>
-                <button onclick="startAssessment()" class="px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full hover:shadow-lg transform hover:-translate-y-1 transition duration-300">
-                    Start Assessment
+                <button onclick="startAssessment()" class="px-6 py-2 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-full hover:shadow-lg transform hover:-translate-y-1 transition duration-300">
+                    Start Your Health Assessment
                 </button>
             </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="gradient-bg pt-24 pb-16 text-white">
+    <section class="gradient-bg text-white py-20">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-5xl font-bold mb-6">Your Complete Health Transformation</h2>
             <p class="text-xl mb-8 max-w-3xl mx-auto">Stop jumping between apps! Get personalized meal plans, exercise routines, meditation scripts, and complete health coaching - all in one platform.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
                 <button onclick="startAssessment()" class="px-8 py-4 bg-white text-purple-600 rounded-full font-semibold hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
-                    <i class="fas fa-heartbeat mr-2"></i>Start Your Health Assessment
+                    Start Your Health Assessment
                 </button>
-                <button onclick="showPricing()" class="px-8 py-4 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-purple-600 transition duration-300">
-                    <i class="fas fa-star mr-2"></i>View Plans
+                <button onclick="scrollToPricing()" class="px-8 py-4 border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-purple-600 transition duration-300">
+                    View Plans
                 </button>
             </div>
         </div>
@@ -119,31 +55,31 @@
     <!-- Features Section -->
     <section class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">Everything You Need in One Place</h2>
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Everything You Need in One Place</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg text-center">
-                    <div class="text-6xl mb-6">🍽️</div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Personalized Meal Plans</h3>
-                    <p class="text-gray-600">AI-generated nutrition plans tailored to your health goals, dietary preferences, and lifestyle needs.</p>
+                <div class="bg-white rounded-xl p-8 shadow-lg card-hover">
+                    <div class="text-5xl mb-4">🍽️</div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Personalized Meal Plans</h3>
+                    <p class="text-gray-600">AI-generated nutrition plans tailored to your health goals, dietary preferences, and lifestyle.</p>
                 </div>
-                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg text-center">
-                    <div class="text-6xl mb-6">💪</div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Custom Exercise Routines</h3>
+                <div class="bg-white rounded-xl p-8 shadow-lg card-hover">
+                    <div class="text-5xl mb-4">💪</div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Custom Exercise Routines</h3>
                     <p class="text-gray-600">Workout plans designed for your fitness level, available equipment, and time constraints.</p>
                 </div>
-                <div class="feature-card bg-white p-8 rounded-2xl shadow-lg text-center">
-                    <div class="text-6xl mb-6">🧘</div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Meditation & Mindfulness</h3>
-                    <p class="text-gray-600">Guided meditation scripts and stress management techniques for complete mental wellness.</p>
+                <div class="bg-white rounded-xl p-8 shadow-lg card-hover">
+                    <div class="text-5xl mb-4">🧘</div>
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Meditation & Mindfulness</h3>
+                    <p class="text-gray-600">Guided meditation scripts and stress management techniques for mental wellness.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
         <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
                     <h2 class="text-4xl font-bold mb-6 text-gray-800">Meet Our Team Lead / Health Coach</h2>
                     <p class="text-lg text-gray-600 mb-6">With over 36 years of medical expertise, Dr. Obinna Eleweanya has dedicated his career to helping people achieve optimal health through evidence-based lifestyle medicine.</p>
@@ -165,9 +101,17 @@
                             Specialist in longevity and lifestyle medicine
                         </li>
                     </ul>
-                    <a href="https://podcasts.apple.com/us/podcast/optimal-health-talk-with-dr-obinna/id1780125688" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full hover:shadow-lg transition duration-300">
-                        <i class="fas fa-podcast mr-2"></i>Listen to Podcast
-                    </a>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://podcasts.apple.com/us/podcast/optimal-health-talk-with-dr-obinna/id1780125688" target="_blank" class="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300">
+                            <i class="fas fa-podcast mr-2"></i>Listen to Podcast
+                        </a>
+                        <a href="https://www.amazon.com/stores/author/B0085YC1LO/allbooks" target="_blank" class="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition duration-300">
+                            <i class="fas fa-book mr-2"></i>View Books
+                        </a>
+                        <a href="https://calendly.com/obiking45/40min" target="_blank" class="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300">
+                            <i class="fas fa-calendar mr-2"></i>Book Consultation
+                        </a>
+                    </div>
                 </div>
                 <div class="text-center">
                     <img src="https://page1.genspark.site/v1/base64_upload/b56f156b0d55899ebd32c095c9d255ab" alt="Dr. Obinna Eleweanya" class="w-80 h-80 rounded-full mx-auto shadow-2xl">
@@ -177,54 +121,51 @@
     </section>
 
     <!-- Pricing Section -->
-    <section class="py-20 bg-gray-50" id="pricing">
+    <section id="pricing" class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">Choose Your Health Journey</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Free Trial -->
-                <div class="pricing-card bg-white p-8 rounded-2xl shadow-lg text-center">
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Free Trial</h3>
-                    <div class="text-4xl font-bold text-purple-600 mb-6">$0<span class="text-lg">/7 days</span></div>
-                    <ul class="space-y-3 mb-8 text-left">
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Basic health assessment</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Sample meal plan</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Basic exercise routine</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Community access</li>
+            <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Choose Your Health Journey</h2>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white border-2 border-gray-200 rounded-xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4">Free Trial</h3>
+                    <div class="text-4xl font-bold text-purple-600 mb-6">$0<span class="text-lg text-gray-500">/7 days</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Basic health assessment</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Sample meal plan</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Basic exercise routine</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Community access</li>
                     </ul>
-                    <button onclick="selectPlan('free')" class="w-full px-6 py-3 border-2 border-purple-600 text-purple-600 rounded-full hover:bg-purple-600 hover:text-white transition duration-300">
+                    <button onclick="selectPlan('free')" class="w-full py-3 border-2 border-purple-600 text-purple-600 rounded-lg hover:bg-purple-600 hover:text-white transition duration-300">
                         Start Free Trial
                     </button>
                 </div>
-
-                <!-- Basic Plan -->
-                <div class="pricing-card bg-white p-8 rounded-2xl shadow-lg text-center border-4 border-purple-600 transform scale-105">
-                    <div class="bg-purple-600 text-white px-4 py-1 rounded-full text-sm mb-4 inline-block">Most Popular</div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Basic Plan</h3>
-                    <div class="text-4xl font-bold text-purple-600 mb-6">$9.97<span class="text-lg">/month</span></div>
-                    <ul class="space-y-3 mb-8 text-left">
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Complete health assessments</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Personalized meal plans</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Custom exercise routines</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Meditation scripts</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Progress tracking</li>
+                
+                <div class="bg-white border-2 border-purple-600 rounded-xl p-8 shadow-xl transform scale-105">
+                    <div class="bg-purple-600 text-white text-center py-2 rounded-lg mb-4">Most Popular</div>
+                    <h3 class="text-2xl font-bold mb-4">Basic Plan</h3>
+                    <div class="text-4xl font-bold text-purple-600 mb-6">$9.97<span class="text-lg text-gray-500">/month</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Complete health assessments</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Personalized meal plans</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Custom exercise routines</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Meditation scripts</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Progress tracking</li>
                     </ul>
-                    <button onclick="selectPlan('basic')" class="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full hover:shadow-lg transform hover:-translate-y-1 transition duration-300">
+                    <button onclick="selectPlan('basic')" class="w-full py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300">
                         Get Started
                     </button>
                 </div>
-
-                <!-- Premium Plan -->
-                <div class="pricing-card bg-white p-8 rounded-2xl shadow-lg text-center">
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Premium Plan</h3>
-                    <div class="text-4xl font-bold text-purple-600 mb-6">$19.97<span class="text-lg">/month</span></div>
-                    <ul class="space-y-3 mb-8 text-left">
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Everything in Basic</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>AI health coaching</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Priority support</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Advanced analytics</li>
-                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i>Direct access to Dr. Obinna</li>
+                
+                <div class="bg-white border-2 border-gray-200 rounded-xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4">Premium Plan</h3>
+                    <div class="text-4xl font-bold text-purple-600 mb-6">$19.97<span class="text-lg text-gray-500">/month</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Everything in Basic</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>AI health coaching</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Priority support</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Advanced analytics</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Direct access to Dr. Obinna</li>
                     </ul>
-                    <button onclick="selectPlan('premium')" class="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full hover:shadow-lg transform hover:-translate-y-1 transition duration-300">
+                    <button onclick="selectPlan('premium')" class="w-full py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg hover:shadow-lg transition duration-300">
                         Go Premium
                     </button>
                 </div>
@@ -238,67 +179,115 @@
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
                     <h3 class="text-xl font-bold mb-4">Contact</h3>
-                    <p class="mb-2">info@drobinna.com</p>
-                    <p class="mb-2">admin@obiking.org</p>
+                    <div class="space-y-2">
+                        <p><i class="fas fa-envelope mr-2"></i>info@drobinna.com</p>
+                        <p><i class="fas fa-envelope mr-2"></i>admin@obiking.org</p>
+                        <p><i class="fas fa-envelope mr-2"></i>admin@healthadvise4you.com</p>
+                    </div>
                 </div>
+                
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Resources</h3>
-                    <a href="https://www.amazon.com/shop/drobinnaeleweanya" class="block mb-2 hover:text-purple-400">Amazon Store</a>
-                    <a href="https://obikinghealth.org/blog" class="block mb-2 hover:text-purple-400">Health Blog</a>
+                    <h3 class="text-xl font-bold mb-4">Media & Resources</h3>
+                    <div class="space-y-2">
+                        <a href="https://podcasts.apple.com/us/podcast/optimal-health-talk-with-dr-obinna/id1780125688" class="block hover:text-purple-400 transition duration-300">
+                            <i class="fab fa-apple mr-2"></i>Apple Podcasts
+                        </a>
+                        <a href="https://open.spotify.com/show/4a7yHGfMnv3lbj4wYuMsCa?si=cc1d1a86d48f42c2" class="block hover:text-purple-400 transition duration-300">
+                            <i class="fab fa-spotify mr-2"></i>Spotify
+                        </a>
+                        <a href="https://youtube.com/channel/UCgKYVY5sDl8AS-ZLaRQF_3Q" class="block hover:text-purple-400 transition duration-300">
+                            <i class="fab fa-youtube mr-2"></i>YouTube Channel
+                        </a>
+                        <a href="https://chatgpt.com/g/g-sZmpHLax6-school-of-healthy-lifestyle" class="block hover:text-purple-400 transition duration-300">
+                            <i class="fas fa-robot mr-2"></i>AI Health Coach
+                        </a>
+                    </div>
                 </div>
+                
                 <div>
                     <h3 class="text-xl font-bold mb-4">Social Media</h3>
-                    <a href="https://www.linkedin.com/in/drobinna" class="block mb-2 hover:text-purple-400">LinkedIn</a>
-                    <a href="https://www.instagram.com/obikingai" class="block mb-2 hover:text-purple-400">Instagram</a>
+                    <div class="space-y-2">
+                        <a href="http://linkedin.com/in/drobinna" class="block hover:text-purple-400 transition duration-300">
+                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                        </a>
+                        <a href="https://www.instagram.com/obikingai" class="block hover:text-purple-400 transition duration-300">
+                            <i class="fab fa-instagram mr-2"></i>Instagram
+                        </a>
+                        <a href="https://www.facebook.com/share/S5QFYB9RhDopKqC7/?mibextid=WC7FNe" class="block hover:text-purple-400 transition duration-300">
+                            <i class="fab fa-facebook mr-2"></i>Facebook
+                        </a>
+                        <a href="www.x.com/obikingai" class="block hover:text-purple-400 transition duration-300">
+                            <i class="fab fa-twitter mr-2"></i>X (Twitter)
+                        </a>
+                    </div>
                 </div>
+                
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Courses</h3>
-                    <a href="https://www.obiking.org/challenges" class="block mb-2 hover:text-purple-400">Health Challenges</a>
-                    <a href="http://obinna-eleweanya-s-school.teachable.com" class="block mb-2 hover:text-purple-400">Online Courses</a>
+                    <h3 class="text-xl font-bold mb-4">Shop & Learn</h3>
+                    <div class="space-y-2">
+                        <a href="https://www.amazon.com/shop/drobinnaeleweanya" class="block hover:text-purple-400 transition duration-300">
+                            <i class="fab fa-amazon mr-2"></i>Amazon Store
+                        </a>
+                        <a href="https://open.substack.com/pub/obinnaeleweanya" class="block hover:text-purple-400 transition duration-300">
+                            <i class="fas fa-newspaper mr-2"></i>Newsletter
+                        </a>
+                        <a href="https://obikinghealth.org/blog" class="block hover:text-purple-400 transition duration-300">
+                            <i class="fas fa-blog mr-2"></i>Health Blog
+                        </a>
+                        <a href="https://calendly.com/obiking45/40min" class="block hover:text-purple-400 transition duration-300">
+                            <i class="fas fa-calendar mr-2"></i>Book Consultation
+                        </a>
+                    </div>
                 </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p>&copy; 2024 Triad Longevity Academy. All rights reserved. | Dr. Obinna Eleweanya, MD</p>
             </div>
         </div>
     </footer>
 
     <!-- Assessment Modal -->
-    <div id="assessmentModal" class="modal fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div id="assessmentModalContent" class="bg-white rounded-2xl max-w-2xl w-full max-h-screen-90 overflow-y-auto p-8 transform transition-all duration-300 scale-95 opacity-0">
+    <div id="assessmentModal" class="fixed inset-0 bg-black bg-opacity-50 modal hidden z-50 overflow-y-auto">
+        <div class="min-h-screen px-4 py-8">
+            <div class="bg-white rounded-xl max-w-2xl mx-auto p-8">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-3xl font-bold text-gray-800">Health Assessment</h2>
-                    <button onclick="closeModal('assessmentModal')" class="text-gray-500 hover:text-gray-700 text-2xl">
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
-                <div id="assessmentContent"></div>
+                <div id="assessmentContent">
+                    <!-- Assessment content will be loaded here -->
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Login Modal -->
-    <div id="loginModal" class="modal fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div id="loginModalContent" class="bg-white rounded-2xl max-w-md w-full p-8 transform transition-all duration-300 scale-95 opacity-0">
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 modal hidden z-50">
+        <div class="min-h-screen flex items-center justify-center px-4">
+            <div class="bg-white rounded-xl max-w-md w-full p-8">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-2xl font-bold text-gray-800">Sign In</h2>
-                    <button onclick="closeModal('loginModal')" class="text-gray-500 hover:text-gray-700 text-2xl">
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-xl">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
-                <form id="loginForm" class="space-y-4">
-                    <div>
-                        <label for="loginEmail" class="block text-gray-700 mb-2">Email</label>
-                        <input type="email" id="loginEmail" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 mb-2">Email</label>
+                        <input type="email" id="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
                     </div>
-                    <div>
-                        <label for="loginPassword" class="block text-gray-700 mb-2">Password</label>
-                        <input type="password" id="loginPassword" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+                    <div class="mb-6">
+                        <label for="password" class="block text-gray-700 mb-2">Password</label>
+                        <input type="password" id="password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
                     </div>
-                    <button type="submit" class="w-full py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:shadow-lg transition duration-300">
+                    <button type="submit" class="w-full py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300">
                         Sign In
                     </button>
-                    <p class="text-center text-gray-600">
-                        Don't have an account? <a href="#" onclick="showRegister()" class="text-purple-600 hover:underline">Register here</a>
+                    <p class="text-center mt-4 text-gray-600">
+                        Don't have an account? <button type="button" onclick="showRegister()" class="text-purple-600 hover:underline">Register here</button>
                     </p>
                 </form>
             </div>
@@ -306,472 +295,615 @@
     </div>
 
     <!-- Registration Modal -->
-    <div id="registerModal" class="modal fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div id="registerModalContent" class="bg-white rounded-2xl max-w-md w-full p-8 transform transition-all duration-300 scale-95 opacity-0">
+    <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-50 modal hidden z-50">
+        <div class="min-h-screen flex items-center justify-center px-4">
+            <div class="bg-white rounded-xl max-w-md w-full p-8">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-2xl font-bold text-gray-800">Create Account</h2>
-                    <button onclick="closeModal('registerModal')" class="text-gray-500 hover:text-gray-700 text-2xl">
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-xl">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
-                <form id="registerForm" class="space-y-4">
-                    <div>
-                        <label for="registerName" class="block text-gray-700 mb-2">Full Name</label>
-                        <input type="text" id="registerName" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+                <form id="registerForm" onsubmit="handleRegister(event)">
+                    <div class="mb-4">
+                        <label for="firstName" class="block text-gray-700 mb-2">First Name</label>
+                        <input type="text" id="firstName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
                     </div>
-                    <div>
-                        <label for="registerEmail" class="block text-gray-700 mb-2">Email</label>
-                        <input type="email" id="registerEmail" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+                    <div class="mb-4">
+                        <label for="lastName" class="block text-gray-700 mb-2">Last Name</label>
+                        <input type="text" id="lastName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
                     </div>
-                    <div>
-                        <label for="registerPassword" class="block text-gray-700 mb-2">Password</label>
-                        <input type="password" id="registerPassword" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+                    <div class="mb-4">
+                        <label for="regEmail" class="block text-gray-700 mb-2">Email</label>
+                        <input type="email" id="regEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
                     </div>
-                    <button type="submit" class="w-full py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:shadow-lg transition duration-300">
+                    <div class="mb-6">
+                        <label for="regPassword" class="block text-gray-700 mb-2">Password</label>
+                        <input type="password" id="regPassword" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                    </div>
+                    <button type="submit" class="w-full py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300">
                         Create Account
                     </button>
+                    <p class="text-center mt-4 text-gray-600">
+                        Already have an account? <button type="button" onclick="showLogin()" class="text-purple-600 hover:underline">Sign in here</button>
+                    </p>
                 </form>
             </div>
         </div>
     </div>
 
     <!-- Payment Modal -->
-    <div id="paymentModal" class="modal fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
-        <div class="flex items-center justify-center min-h-screen p-4">
-            <div id="paymentModalContent" class="bg-white rounded-2xl max-w-md w-full p-8 transform transition-all duration-300 scale-95 opacity-0">
+    <div id="paymentModal" class="fixed inset-0 bg-black bg-opacity-50 modal hidden z-50">
+        <div class="min-h-screen flex items-center justify-center px-4">
+            <div class="bg-white rounded-xl max-w-md w-full p-8">
                 <div class="flex justify-between items-center mb-6">
                     <h2 class="text-2xl font-bold text-gray-800">Secure Payment</h2>
-                    <button onclick="closeModal('paymentModal')" class="text-gray-500 hover:text-gray-700 text-2xl">
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-xl">
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
-                <div id="paymentContent"></div>
+                <div id="paymentContent">
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold mb-2" id="planTitle"></h3>
+                        <p class="text-gray-600" id="planPrice"></p>
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 mb-2">Card Information</label>
+                        <div id="card-element" class="p-4 border border-gray-300 rounded-lg">
+                            <!-- Stripe Elements will create form elements here -->
+                        </div>
+                    </div>
+                    <div id="card-errors" class="text-red-500 mb-4 hidden"></div>
+                    <button id="submit-payment" class="w-full py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300 disabled:opacity-50">
+                        <span id="payment-button-text">Complete Payment</span>
+                        <span id="payment-spinner" class="hidden">
+                            <i class="fas fa-spinner fa-spin mr-2"></i>Processing...
+                        </span>
+                    </button>
+                    <div id="payment-result" class="mt-4 text-center"></div>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // --- CONFIGURATION ---
-        // CORRECTED: Replaced live Stripe key with a placeholder for a TEST key. 
-        // Using live keys in development is risky. Get your test key from the Stripe Dashboard.
-        const stripe = Stripe('pk_test_51QamMNLzxEHEHtnuLdYm0aXf1oBwT9k9z4S5lY9y5eQ5rW5c3f8d6V7j8n9m0aXf1oBwT9k9z4S5lY9y5eQ5rW5'); // Replace with your actual TEST publishable key
-        
-        const supabaseUrl = 'https://qylrdkmpcsgemyohgszb.supabase.co';
-        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF5bHJka21wY3NnZW15b2hnc3piIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDkzMDI4MjYsImV4cCI6MjA2NDg3ODgyNn0.e-n7RwQNAaxNrsiPiPIk8OtKszHstbdocdEBYoMw6FQ';
-        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
-
-        // --- GLOBAL STATE ---
-        let currentUser = null;
-        let assessmentScores = { mouth: 0, muscle: 0, mind: 0 };
+        // Initialize Stripe
+        const stripe = Stripe('pk_live_51QamMNLzxEHEHtnuOqdMCyc92NfzmR4x33h0sCqlLf1j0HVe8LlpxFm63hRaZ0rnlab83GXFyiayNm5AluJ8WCRW00DmcDxzAr');
+        let elements, cardElement;
         let selectedPlan = null;
-        let cardElement = null;
-        let paymentIntentClientSecret = null;
+        let currentAssessment = 'mouth';
+        let assessmentScores = { mouth: 0, muscle: 0, mind: 0 };
 
-        // --- ASSESSMENT DATA ---
+        // Assessment questions with proper scoring
         const assessmentQuestions = {
             mouth: [
-                { question: "How would you rate your current eating habits?", options: [{ text: "Excellent - I eat nutritious meals regularly", score: 4 }, { text: "Good - I try to eat healthy most of the time", score: 3 }, { text: "Fair - I eat healthy sometimes", score: 2 }, { text: "Poor - I rarely eat healthy foods", score: 1 }] },
-                { question: "How often do you eat processed foods?", options: [{ text: "Rarely or never", score: 4 }, { text: "Once or twice per week", score: 3 }, { text: "Several times per week", score: 2 }, { text: "Daily", score: 1 }] },
-                { question: "How much water do you drink daily?", options: [{ text: "8+ glasses per day", score: 4 }, { text: "6-7 glasses per day", score: 3 }, { text: "4-5 glasses per day", score: 2 }, { text: "Less than 4 glasses per day", score: 1 }] }
+                {
+                    question: "How would you rate your current eating habits?",
+                    options: [
+                        { text: "Excellent - I eat nutritious, balanced meals regularly", score: 10 },
+                        { text: "Very Good - I eat healthy most of the time", score: 8 },
+                        { text: "Good - I try to eat healthy but sometimes struggle", score: 6 },
+                        { text: "Fair - I eat healthy occasionally", score: 4 },
+                        { text: "Poor - I rarely eat healthy foods", score: 2 }
+                    ]
+                },
+                {
+                    question: "How often do you eat processed or fast foods?",
+                    options: [
+                        { text: "Rarely or never (less than once per week)", score: 10 },
+                        { text: "Occasionally (1-2 times per week)", score: 8 },
+                        { text: "Sometimes (3-4 times per week)", score: 6 },
+                        { text: "Often (5-6 times per week)", score: 4 },
+                        { text: "Daily or almost daily", score: 2 }
+                    ]
+                },
+                {
+                    question: "How much water do you drink daily?",
+                    options: [
+                        { text: "8+ glasses (64+ oz) per day", score: 10 },
+                        { text: "6-7 glasses (48-56 oz) per day", score: 8 },
+                        { text: "4-5 glasses (32-40 oz) per day", score: 6 },
+                        { text: "2-3 glasses (16-24 oz) per day", score: 4 },
+                        { text: "Less than 2 glasses (16 oz) per day", score: 2 }
+                    ]
+                },
+                {
+                    question: "How many servings of fruits and vegetables do you eat daily?",
+                    options: [
+                        { text: "7+ servings per day", score: 10 },
+                        { text: "5-6 servings per day", score: 8 },
+                        { text: "3-4 servings per day", score: 6 },
+                        { text: "1-2 servings per day", score: 4 },
+                        { text: "Less than 1 serving per day", score: 2 }
+                    ]
+                }
             ],
             muscle: [
-                { question: "How often do you exercise per week?", options: [{ text: "5+ times per week", score: 4 }, { text: "3-4 times per week", score: 3 }, { text: "1-2 times per week", score: 2 }, { text: "Rarely or never", score: 1 }] },
-                { question: "How would you rate your current fitness level?", options: [{ text: "Excellent - Very fit and strong", score: 4 }, { text: "Good - Moderately fit", score: 3 }, { text: "Fair - Somewhat out of shape", score: 2 }, { text: "Poor - Very out of shape", score: 1 }] },
-                { question: "How much time do you spend sitting per day?", options: [{ text: "Less than 4 hours", score: 4 }, { text: "4-6 hours", score: 3 }, { text: "6-8 hours", score: 2 }, { text: "More than 8 hours", score: 1 }] }
+                {
+                    question: "How often do you engage in structured exercise per week?",
+                    options: [
+                        { text: "6-7 times per week", score: 10 },
+                        { text: "4-5 times per week", score: 8 },
+                        { text: "2-3 times per week", score: 6 },
+                        { text: "Once per week", score: 4 },
+                        { text: "Rarely or never", score: 2 }
+                    ]
+                },
+                {
+                    question: "How would you rate your current fitness level?",
+                    options: [
+                        { text: "Excellent - Very fit, strong, and energetic", score: 10 },
+                        { text: "Very Good - Above average fitness", score: 8 },
+                        { text: "Good - Moderately fit", score: 6 },
+                        { text: "Fair - Below average fitness", score: 4 },
+                        { text: "Poor - Very out of shape", score: 2 }
+                    ]
+                },
+                {
+                    question: "How much time do you spend sitting per day?",
+                    options: [
+                        { text: "Less than 4 hours", score: 10 },
+                        { text: "4-6 hours", score: 8 },
+                        { text: "6-8 hours", score: 6 },
+                        { text: "8-10 hours", score: 4 },
+                        { text: "More than 10 hours", score: 2 }
+                    ]
+                },
+                {
+                    question: "How often do you experience muscle or joint pain?",
+                    options: [
+                        { text: "Never or very rarely", score: 10 },
+                        { text: "Occasionally (once a month)", score: 8 },
+                        { text: "Sometimes (2-3 times per month)", score: 6 },
+                        { text: "Often (weekly)", score: 4 },
+                        { text: "Daily or almost daily", score: 2 }
+                    ]
+                }
             ],
             mind: [
-                { question: "How would you rate your stress levels?", options: [{ text: "Low - I manage stress very well", score: 4 }, { text: "Moderate - I handle stress fairly well", score: 3 }, { text: "High - I often feel stressed", score: 2 }, { text: "Very high - I'm constantly stressed", score: 1 }] },
-                { question: "How many hours of quality sleep do you get per night?", options: [{ text: "7-9 hours consistently", score: 4 }, { text: "6-7 hours most nights", score: 3 }, { text: "5-6 hours most nights", score: 2 }, { text: "Less than 5 hours", score: 1 }] },
-                { question: "How often do you practice mindfulness or meditation?", options: [{ text: "Daily", score: 4 }, { text: "Several times per week", score: 3 }, { text: "Occasionally", score: 2 }, { text: "Never", score: 1 }] }
+                {
+                    question: "How would you rate your stress levels?",
+                    options: [
+                        { text: "Very Low - I manage stress exceptionally well", score: 10 },
+                        { text: "Low - I handle stress very well", score: 8 },
+                        { text: "Moderate - I manage stress fairly well", score: 6 },
+                        { text: "High - I often feel stressed", score: 4 },
+                        { text: "Very High - I'm constantly overwhelmed", score: 2 }
+                    ]
+                },
+                {
+                    question: "How many hours of quality sleep do you get per night?",
+                    options: [
+                        { text: "8-9 hours consistently", score: 10 },
+                        { text: "7-8 hours most nights", score: 8 },
+                        { text: "6-7 hours most nights", score: 6 },
+                        { text: "5-6 hours most nights", score: 4 },
+                        { text: "Less than 5 hours", score: 2 }
+                    ]
+                },
+                {
+                    question: "How often do you practice mindfulness, meditation, or relaxation techniques?",
+                    options: [
+                        { text: "Daily", score: 10 },
+                        { text: "4-6 times per week", score: 8 },
+                        { text: "2-3 times per week", score: 6 },
+                        { text: "Occasionally", score: 4 },
+                        { text: "Never", score: 2 }
+                    ]
+                },
+                {
+                    question: "How would you rate your overall mental and emotional well-being?",
+                    options: [
+                        { text: "Excellent - Very positive and resilient", score: 10 },
+                        { text: "Very Good - Generally positive", score: 8 },
+                        { text: "Good - Mostly stable", score: 6 },
+                        { text: "Fair - Some ups and downs", score: 4 },
+                        { text: "Poor - Often struggling", score: 2 }
+                    ]
+                }
             ]
         };
 
-        // --- PRICING DATA ---
-        const pricingPlans = {
-            free: { name: 'Free Trial', amount: 0, currency: 'usd' },
-            basic: { name: 'Basic Plan', amount: 997, currency: 'usd', interval: 'month' },
-            premium: { name: 'Premium Plan', amount: 1997, currency: 'usd', interval: 'month' }
-        };
-
-        // --- MODAL FUNCTIONS ---
+        // Modal functions
         function showModal(modalId) {
-            const modal = document.getElementById(modalId);
-            const modalContent = document.getElementById(`${modalId}Content`);
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                modalContent.classList.remove('opacity-0', 'scale-95');
-            }, 10);
+            document.getElementById(modalId).classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         }
 
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            const modalContent = document.getElementById(`${modalId}Content`);
-            modalContent.classList.add('opacity-0', 'scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
-        }
-
-        function closeAllModals() {
+        function closeModal() {
             document.querySelectorAll('.modal').forEach(modal => {
-                const modalContent = modal.querySelector('div[id$="Content"]');
-                if (modalContent) {
-                    modalContent.classList.add('opacity-0', 'scale-95');
-                }
-                setTimeout(() => modal.classList.add('hidden'), 300);
+                modal.classList.add('hidden');
             });
+            document.body.style.overflow = 'auto';
         }
 
         function showLogin() {
-            closeAllModals();
+            closeModal();
             showModal('loginModal');
         }
 
         function showRegister() {
-            closeAllModals();
+            closeModal();
             showModal('registerModal');
         }
 
-        function showPricing() {
+        function scrollToPricing() {
             document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // --- ASSESSMENT LOGIC ---
+        // Assessment functions
         function startAssessment() {
+            currentAssessment = 'mouth';
+            assessmentScores = { mouth: 0, muscle: 0, mind: 0 };
             loadAssessment('mouth');
             showModal('assessmentModal');
         }
 
         function loadAssessment(type) {
             const questions = assessmentQuestions[type];
-            const content = `
-                <div class="text-center mb-8">
-                    <div class="inline-flex items-center px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full text-lg font-semibold">
-                        ${type.charAt(0).toUpperCase() + type.slice(1)} Assessment
+            const typeNames = { mouth: 'Nutrition', muscle: 'Fitness', mind: 'Wellness' };
+            
+            const html = `
+                <div class="mb-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-semibold text-purple-600">${typeNames[type]} Assessment</h3>
+                        <div class="text-sm text-gray-500">Step ${type === 'mouth' ? '1' : type === 'muscle' ? '2' : '3'} of 3</div>
+                    </div>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mb-6">
+                        <div class="bg-purple-600 h-2 rounded-full" style="width: ${type === 'mouth' ? '33%' : type === 'muscle' ? '66%' : '100%'}"></div>
                     </div>
                 </div>
-                <form id="assessmentForm-${type}" class="space-y-6">
+                
+                <form id="assessmentForm">
                     ${questions.map((q, index) => `
-                        <div class="bg-gray-50 p-6 rounded-xl">
-                            <h4 class="font-semibold text-gray-800 mb-4">${q.question}</h4>
-                            <div class="space-y-3">
-                                ${q.options.map(option => `
-                                    <label class="assessment-option flex items-center p-3 bg-white rounded-lg cursor-pointer border-2 border-transparent hover:border-purple-200">
-                                        <input type="radio" name="q${index}" value="${option.score}" required class="mr-3 text-purple-600 focus:ring-purple-500">
+                        <div class="mb-8">
+                            <h4 class="text-lg font-medium mb-4 text-gray-800">${q.question}</h4>
+                            <div class="space-y-2">
+                                ${q.options.map((option, optIndex) => `
+                                    <label class="flex items-center p-3 border border-gray-200 rounded-lg cursor-pointer assessment-option hover:bg-gray-50 transition duration-200">
+                                        <input type="radio" name="q${index}" value="${option.score}" class="mr-3 text-purple-600">
                                         <span class="text-gray-700">${option.text}</span>
                                     </label>
                                 `).join('')}
                             </div>
                         </div>
                     `).join('')}
-                    <div class="text-center pt-6">
-                        <button type="button" onclick="submitAssessment('${type}')" class="px-8 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full font-semibold hover:shadow-lg transform hover:-translate-y-1 transition duration-300">
-                            ${type === 'mind' ? 'Complete Assessment' : 'Next: ' + (type === 'mouth' ? 'Muscle' : 'Mind')}
+                    
+                    <div class="flex justify-between pt-6">
+                        ${type !== 'mouth' ? `<button type="button" onclick="previousAssessment()" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition duration-300">Previous</button>` : '<div></div>'}
+                        <button type="button" onclick="submitAssessment('${type}')" class="px-8 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300">
+                            ${type === 'mind' ? 'Complete Assessment' : 'Next'}
                         </button>
                     </div>
                 </form>
             `;
-            document.getElementById('assessmentContent').innerHTML = content;
+            
+            document.getElementById('assessmentContent').innerHTML = html;
         }
 
         function submitAssessment(type) {
-            const form = document.getElementById(`assessmentForm-${type}`);
-            if (!form.checkValidity()) {
+            const form = document.getElementById('assessmentForm');
+            const formData = new FormData(form);
+            let score = 0;
+            let questionCount = 0;
+
+            for (let [key, value] of formData.entries()) {
+                score += parseInt(value);
+                questionCount++;
+            }
+
+            if (questionCount < assessmentQuestions[type].length) {
                 alert('Please answer all questions before proceeding.');
                 return;
             }
 
-            const formData = new FormData(form);
-            let score = 0;
-            formData.forEach(value => score += parseInt(value));
-            
-            assessmentScores[type] = Math.round((score / (assessmentQuestions[type].length * 4)) * 100);
+            // Calculate percentage score
+            const maxPossibleScore = assessmentQuestions[type].length * 10;
+            assessmentScores[type] = Math.round((score / maxPossibleScore) * 100);
 
-            if (type === 'mouth') loadAssessment('muscle');
-            else if (type === 'muscle') loadAssessment('mind');
-            else showResults();
+            if (type === 'mouth') {
+                currentAssessment = 'muscle';
+                loadAssessment('muscle');
+            } else if (type === 'muscle') {
+                currentAssessment = 'mind';
+                loadAssessment('mind');
+            } else {
+                showResults();
+            }
+        }
+
+        function previousAssessment() {
+            if (currentAssessment === 'muscle') {
+                currentAssessment = 'mouth';
+                loadAssessment('mouth');
+            } else if (currentAssessment === 'mind') {
+                currentAssessment = 'muscle';
+                loadAssessment('muscle');
+            }
         }
 
         function showResults() {
             const avgScore = Math.round((assessmentScores.mouth + assessmentScores.muscle + assessmentScores.mind) / 3);
-            const content = `
+            
+            const html = `
                 <div class="text-center">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-8">Your Health Assessment Results</h3>
-                    <div class="grid grid-cols-3 gap-6 mb-8">
-                        ${['mouth', 'muscle', 'mind'].map(type => `
-                            <div class="text-center">
-                                <h4 class="font-semibold text-gray-700 mb-3">${type.charAt(0).toUpperCase() + type.slice(1)}</h4>
-                                <div class="score-circle w-20 h-20 text-lg">${assessmentScores[type]}%</div>
-                            </div>
-                        `).join('')}
+                    <h3 class="text-3xl font-bold text-purple-600 mb-6">Your Health Assessment Results</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        ${['mouth', 'muscle', 'mind'].map(category => {
+                            const score = assessmentScores[category];
+                            const categoryNames = { mouth: 'Nutrition', muscle: 'Fitness', mind: 'Wellness' };
+                            const scoreClass = score >= 80 ? 'score-excellent' : score >= 65 ? 'score-good' : 'score-needs-improvement';
+                            const scoreText = score >= 80 ? 'Excellent' : score >= 65 ? 'Good' : 'Needs Improvement';
+                            
+                            return `
+                                <div class="text-center">
+                                    <h4 class="text-lg font-semibold mb-3 text-gray-800">${categoryNames[category]}</h4>
+                                    <div class="w-24 h-24 ${scoreClass} rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-2">
+                                        ${score}%
+                                    </div>
+                                    <p class="text-sm text-gray-600">${scoreText}</p>
+                                </div>
+                            `;
+                        }).join('')}
                     </div>
+
                     <div class="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-xl mb-8">
-                        <h4 class="text-xl font-semibold text-gray-800 mb-4">Your Personalized Recommendations</h4>
-                        <div id="recommendations" class="text-left">
-                            <div class="flex justify-center items-center py-4"><div class="loading-spinner"></div><span class="ml-3 text-gray-600">Generating your plan...</span></div>
+                        <h4 class="text-xl font-semibold mb-4 text-gray-800">Your Personalized Health Plan</h4>
+                        <div class="text-left space-y-4">
+                            ${generateRecommendations()}
                         </div>
                     </div>
+
                     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <button onclick="selectPlan('basic')" class="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full font-semibold hover:shadow-lg transition duration-300">
-                            <i class="fas fa-star mr-2"></i>Upgrade to Get Full Plan
+                        <button onclick="generateFullPlan()" class="px-8 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300">
+                            Get My Complete Plan
+                        </button>
+                        <button onclick="closeModal(); scrollToPricing()" class="px-8 py-3 border-2 border-purple-600 text-purple-600 rounded-lg hover:bg-purple-600 hover:text-white transition duration-300">
+                            View Premium Plans
                         </button>
                     </div>
                 </div>
             `;
-            document.getElementById('assessmentContent').innerHTML = content;
-            generatePersonalizedPlan();
-        }
-
-        // --- AI RECOMMENDATION (SIMULATED) ---
-        async function getAIRecommendations(scores) {
-            // --- CRITICAL SECURITY CORRECTION ---
-            // The original code had an OpenAI API key on the frontend. This is a MAJOR security risk.
-            // API calls with secret keys MUST be made from a secure backend server.
-            // This function now simulates the backend call.
-            console.log("Simulating API call to backend for AI recommendations...");
-            await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network latency
-
-            return `
-                <div class="space-y-4 text-gray-700">
-                    <h5 class="font-bold text-purple-700"><i class="fas fa-utensils mr-2"></i>Nutrition (Score: ${scores.mouth}%)</h5>
-                    <p>Based on your score, a key area for improvement is consistency. We recommend focusing on incorporating more whole foods. Try swapping one processed snack per day with a piece of fruit or a handful of nuts.</p>
-                    <h5 class="font-bold text-purple-700"><i class="fas fa-dumbbell mr-2"></i>Fitness (Score: ${scores.muscle}%)</h5>
-                    <p>Your fitness score shows a solid foundation. To take it to the next level, we suggest adding two 20-minute brisk walks or a light jog to your weekly routine. Consistency is more important than intensity at this stage.</p>
-                    <h5 class="font-bold text-purple-700"><i class="fas fa-brain mr-2"></i>Wellness (Score: ${scores.mind}%)</h5>
-                    <p>To improve your mind score, we recommend trying a 5-minute guided meditation session before bed. This can significantly improve sleep quality and reduce daily stress. There are many free apps to get you started.</p>
-                    <div class="mt-6 p-4 bg-green-100 border-l-4 border-green-500 rounded-r-lg">
-                        <p class="text-green-800 font-semibold">
-                            <i class="fas fa-lightbulb mr-2"></i>
-                            Ready for the next step? Upgrade to a paid plan for detailed meal recipes, guided workout videos, and advanced meditation tracks!
-                        </p>
-                    </div>
-                </div>
-            `;
-        }
-
-        async function generatePersonalizedPlan() {
-            const recommendationsDiv = document.getElementById('recommendations');
-            if (!recommendationsDiv) return;
-
-            try {
-                const recommendationsHtml = await getAIRecommendations(assessmentScores);
-                recommendationsDiv.innerHTML = recommendationsHtml;
-            } catch (error) {
-                console.error('Error generating recommendations:', error);
-                recommendationsDiv.innerHTML = `<p class="text-red-500 text-center">Sorry, we couldn't generate recommendations at this time. Please try again later.</p>`;
-            }
-        }
-
-        // --- PAYMENT LOGIC (REFACTORED) ---
-        async function selectPlan(planType) {
-            selectedPlan = planType;
             
-            if (planType === 'free') {
-                if (!currentUser) {
-                    alert('Please create an account to start your free trial.');
-                    showRegister();
-                } else {
-                    alert('Free trial activated! You now have 7 days of full access.');
-                    closeAllModals();
-                }
+            document.getElementById('assessmentContent').innerHTML = html;
+        }
+
+        function generateRecommendations() {
+            const { mouth, muscle, mind } = assessmentScores;
+            let recommendations = [];
+
+            if (mouth < 75) {
+                recommendations.push(`
+                    <div class="flex items-start space-x-3">
+                        <div class="text-2xl">🍽️</div>
+                        <div>
+                            <h5 class="font-semibold text-purple-600">Nutrition Focus:</h5>
+                            <p class="text-gray-700">Increase whole foods, hydration, and meal planning consistency.</p>
+                        </div>
+                    </div>
+                `);
+            } else {
+                recommendations.push(`
+                    <div class="flex items-start space-x-3">
+                        <div class="text-2xl">✅</div>
+                        <div>
+                            <h5 class="font-semibold text-green-600">Excellent Nutrition:</h5>
+                            <p class="text-gray-700">Keep up your outstanding eating habits! Consider advanced nutrition optimization.</p>
+                        </div>
+                    </div>
+                `);
+            }
+
+            if (muscle < 75) {
+                recommendations.push(`
+                    <div class="flex items-start space-x-3">
+                        <div class="text-2xl">💪</div>
+                        <div>
+                            <h5 class="font-semibold text-purple-600">Fitness Focus:</h5>
+                            <p class="text-gray-700">Increase exercise frequency and reduce sedentary time for better physical health.</p>
+                        </div>
+                    </div>
+                `);
+            } else {
+                recommendations.push(`
+                    <div class="flex items-start space-x-3">
+                        <div class="text-2xl">✅</div>
+                        <div>
+                            <h5 class="font-semibold text-green-600">Great Fitness Level:</h5>
+                            <p class="text-gray-700">Your exercise routine is excellent! Focus on variety and progression.</p>
+                        </div>
+                    </div>
+                `);
+            }
+
+            if (mind < 75) {
+                recommendations.push(`
+                    <div class="flex items-start space-x-3">
+                        <div class="text-2xl">🧘</div>
+                        <div>
+                            <h5 class="font-semibold text-purple-600">Wellness Focus:</h5>
+                            <p class="text-gray-700">Prioritize stress management, sleep quality, and mindfulness practices.</p>
+                        </div>
+                    </div>
+                `);
+            } else {
+                recommendations.push(`
+                    <div class="flex items-start space-x-3">
+                        <div class="text-2xl">✅</div>
+                        <div>
+                            <h5 class="font-semibold text-green-600">Excellent Mental Wellness:</h5>
+                            <p class="text-gray-700">Your mental health practices are outstanding! Maintain these habits.</p>
+                        </div>
+                    </div>
+                `);
+            }
+
+            return recommendations.join('');
+        }
+
+        function generateFullPlan() {
+            alert('Your complete personalized health plan is being prepared! This feature will redirect you to our premium dashboard with detailed meal plans, exercise routines, and wellness protocols tailored to your assessment results.');
+        }
+
+        // Plan selection
+        function selectPlan(plan) {
+            selectedPlan = plan;
+            
+            if (plan === 'free') {
+                alert('🎉 Welcome to your 7-day free trial! You now have access to basic health assessments, sample meal plans, and community features. Enjoy exploring the Triad Longevity Academy!');
                 return;
             }
             
-            if (!currentUser) {
-                 alert('Please sign in or create an account before purchasing a plan.');
-                 showLogin();
-                 return;
-            }
-
-            const plan = pricingPlans[planType];
             showPaymentModal(plan);
         }
-        
-        // --- STEP 1: SIMULATE CREATING A PAYMENT INTENT ON THE SERVER ---
-        async function createPaymentIntent(plan) {
-            // In a REAL application, this would be a fetch() call to your backend.
-            // Your backend would use the Stripe Node.js library to create a PaymentIntent.
-            // e.g., const paymentIntent = await stripe.paymentIntents.create({ amount: plan.amount, currency: plan.currency });
-            // And return { clientSecret: paymentIntent.client_secret }
-            console.log(`Simulating backend call to create Payment Intent for ${plan.amount}`);
-            await new Promise(res => setTimeout(res, 500)); // Simulate network delay
-            // This is a FAKE client secret for testing purposes.
-            return {
-                clientSecret: `pi_test_${Math.random().toString(36).substring(2)}_secret_${Math.random().toString(36).substring(2)}`
+
+        function showPaymentModal(plan) {
+            const planDetails = {
+                basic: { title: 'Basic Plan', price: '$9.97/month', amount: 997 },
+                premium: { title: 'Premium Plan', price: '$19.97/month', amount: 1997 }
             };
-        }
-
-        async function showPaymentModal(plan) {
-            const content = `
-                <div class="text-center mb-6">
-                    <h3 class="text-xl font-semibold text-gray-800">${plan.name}</h3>
-                    <div class="text-3xl font-bold text-purple-600 mt-2">$${(plan.amount / 100).toFixed(2)}<span class="text-lg">/${plan.interval}</span></div>
-                </div>
-                <div id="payment-form-container"><div class="flex justify-center p-8"><div class="loading-spinner"></div></div></div>
-                <div class="mt-4 text-center"><div class="flex items-center justify-center space-x-2 text-gray-500 text-sm"><i class="fas fa-lock"></i><span>Secured by Stripe</span></div></div>`;
-
-            document.getElementById('paymentContent').innerHTML = content;
+            
+            document.getElementById('planTitle').textContent = planDetails[plan].title;
+            document.getElementById('planPrice').textContent = planDetails[plan].price;
+            
             showModal('paymentModal');
-
-            try {
-                const { clientSecret } = await createPaymentIntent(plan);
-                paymentIntentClientSecret = clientSecret;
-                renderPaymentForm(plan, currentUser.email);
-            } catch (error) {
-                document.getElementById('payment-form-container').innerHTML = `<p class="text-red-500 text-center">Could not initialize payment. Please try again.</p>`;
-                console.error("Failed to create Payment Intent", error);
+            
+            // Initialize Stripe Elements
+            if (!elements) {
+                elements = stripe.elements();
+                cardElement = elements.create('card', {
+                    style: {
+                        base: {
+                            fontSize: '16px',
+                            color: '#424770',
+                            fontFamily: 'system-ui, -apple-system, sans-serif',
+                            '::placeholder': {
+                                color: '#aab7c4',
+                            },
+                        },
+                    },
+                });
+                cardElement.mount('#card-element');
+                
+                cardElement.on('change', ({error}) => {
+                    const displayError = document.getElementById('card-errors');
+                    if (error) {
+                        displayError.textContent = error.message;
+                        displayError.classList.remove('hidden');
+                    } else {
+                        displayError.classList.add('hidden');
+                    }
+                });
+                
+                document.getElementById('submit-payment').addEventListener('click', handlePayment);
             }
         }
-        
-        // --- STEP 2: RENDER THE PAYMENT FORM ---
-        function renderPaymentForm(plan, userEmail) {
-            const formHtml = `
-                <form id="payment-form" class="space-y-4">
-                    <div>
-                        <label class="block text-gray-700 mb-2">Email</label>
-                        <input type="email" id="email-input" required class="w-full p-3 border border-gray-300 rounded-lg bg-gray-100" value="${userEmail}" readonly>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 mb-2">Card Information</label>
-                        <div id="card-element"></div>
-                        <div id="card-errors" role="alert" class="text-red-600 text-sm mt-2"></div>
-                    </div>
-                    <button type="submit" id="submit-payment" class="w-full py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg transition duration-300">
-                        <span id="button-text">Pay $${(plan.amount / 100).toFixed(2)}</span>
-                        <div id="spinner" class="loading-spinner mx-auto hidden"></div>
-                    </button>
-                </form>`;
-            document.getElementById('payment-form-container').innerHTML = formHtml;
-            
-            const elements = stripe.elements({ clientSecret: paymentIntentClientSecret });
-            cardElement = elements.create('card');
-            cardElement.mount('#card-element');
-            cardElement.on('change', e => document.getElementById('card-errors').textContent = e.error ? e.error.message : '');
 
-            document.getElementById('payment-form').addEventListener('submit', handlePaymentSubmit);
-        }
-
-        // --- STEP 3: HANDLE THE PAYMENT SUBMISSION ---
-        async function handlePaymentSubmit(event) {
-            event.preventDefault();
+        async function handlePayment() {
             const submitButton = document.getElementById('submit-payment');
-            const buttonText = document.getElementById('button-text');
-            const spinner = document.getElementById('spinner');
-
+            const buttonText = document.getElementById('payment-button-text');
+            const spinner = document.getElementById('payment-spinner');
+            const resultDiv = document.getElementById('payment-result');
+            
             submitButton.disabled = true;
             buttonText.classList.add('hidden');
             spinner.classList.remove('hidden');
-
-            // This is where you would use a real client secret from your server
-            const { error, paymentIntent } = await stripe.confirmCardPayment(paymentIntentClientSecret, {
-                payment_method: {
-                    card: cardElement,
-                    billing_details: { email: document.getElementById('email-input').value },
-                },
-            });
             
-            // Because we are using a FAKE client secret, the above call will always fail with a specific error.
-            // We will catch this and simulate success for demonstration purposes.
-            if (error && error.type !== 'invalid_request_error') { // A real error (e.g., card declined)
-                 showError(error.message);
-            } else { // The expected "No such PaymentIntent" error, or a real success
-                console.log("Simulating successful payment confirmation.");
-                await processSuccessfulPayment(document.getElementById('email-input').value, { last4: '4242', brand: 'Visa' });
-            }
-
-            submitButton.disabled = false;
-            buttonText.classList.remove('hidden');
-            spinner.classList.add('hidden');
-        }
-        
-        async function processSuccessfulPayment(email, cardInfo) {
-            showPaymentSuccess();
-            await saveUserSubscription(email, selectedPlan, cardInfo);
-        }
-
-        async function saveUserSubscription(email, planType, cardInfo) {
             try {
-                const { error } = await supabase
-                    .from('subscriptions')
-                    .insert([{
-                        email: email,
-                        plan: planType,
-                        status: 'active',
-                        card_last4: cardInfo.last4,
-                        card_brand: cardInfo.brand
-                    }]);
-                if (error) throw error;
-                console.log("Subscription saved to Supabase for:", email);
-            } catch (error) {
-                console.error('Error saving subscription to Supabase:', error);
-                // Inform user or admin of the issue
+                const {token, error} = await stripe.createToken(cardElement);
+                
+                if (error) {
+                    throw new Error(error.message);
+                }
+                
+                // Block known test cards
+                const testCards = ['4242', '4000', '5555', '3782'];
+                if (testCards.some(test => token.card.last4 === test)) {
+                    throw new Error('Test cards are not accepted. Please use a real payment method.');
+                }
+                
+                // Simulate payment processing (in real implementation, send to your backend)
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                // For demo purposes, we'll simulate a successful payment
+                // In production, you would send the token to your backend server
+                resultDiv.innerHTML = `
+                    <div class="text-green-600 font-semibold">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        Payment successful! Welcome to Triad Longevity Academy ${selectedPlan === 'basic' ? 'Basic' : 'Premium'} Plan!
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2">You will receive a confirmation email shortly.</p>
+                `;
+                
+                setTimeout(() => {
+                    closeModal();
+                    alert(`🎉 Welcome to your ${selectedPlan === 'basic' ? 'Basic' : 'Premium'} plan! Your account has been activated and you now have full access to all features.`);
+                }, 3000);
+                
+            } catch (err) {
+                resultDiv.innerHTML = `
+                    <div class="text-red-600 font-semibold">
+                        <i class="fas fa-exclamation-circle mr-2"></i>
+                        ${err.message}
+                    </div>
+                `;
+            } finally {
+                submitButton.disabled = false;
+                buttonText.classList.remove('hidden');
+                spinner.classList.add('hidden');
             }
         }
 
-        function showError(message) {
-            document.getElementById('card-errors').textContent = message;
+        // Form handlers
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Simulate login (in production, this would authenticate with your backend)
+            setTimeout(() => {
+                alert(`Welcome back! You are now signed in as ${email}`);
+                closeModal();
+            }, 1000);
         }
 
-        function showPaymentSuccess() {
-            const plan = pricingPlans[selectedPlan];
-            document.getElementById('paymentContent').innerHTML = `
-                <div class="text-center">
-                    <div class="text-6xl text-green-500 mb-4"><i class="fas fa-check-circle"></i></div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Payment Successful!</h3>
-                    <p class="text-gray-600 mb-6">Welcome to the ${plan.name}! Your health transformation starts now.</p>
-                    <button onclick="startHealthDashboard()" class="w-full py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg transition duration-300">
-                        <i class="fas fa-rocket mr-2"></i>Go to My Dashboard
-                    </button>
-                </div>`;
-        }
-        
-        function startHealthDashboard() {
-            closeAllModals();
-            alert('Congratulations! Your personalized health dashboard is now unlocked. You will receive a welcome email with your login details and first health plan within the next few minutes.');
+        function handleRegister(event) {
+            event.preventDefault();
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            
+            // Simulate registration (in production, this would create account in your backend)
+            setTimeout(() => {
+                alert(`Account created successfully! Welcome to Triad Longevity Academy, ${firstName}!`);
+                closeModal();
+            }, 1000);
         }
 
-        // --- USER AUTHENTICATION ---
-        document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            try {
-                const { data, error } = await supabase.auth.signInWithPassword({ email, password });
-                if (error) throw error;
-                currentUser = data.user;
-                closeModal('loginModal');
-                alert(`Welcome back, ${data.user.email}!`);
-            } catch (error) {
-                alert('Login failed: ' + error.message);
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal();
             }
         });
 
-        document.getElementById('registerForm')?.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const name = document.getElementById('registerName').value;
-            const email = document.getElementById('registerEmail').value;
-            const password = document.getElementById('registerPassword').value;
-            try {
-                const { data, error } = await supabase.auth.signUp({ email, password, options: { data: { full_name: name } } });
-                if (error) throw error;
-                alert('Registration successful! Please check your email to verify your account.');
-                closeModal('registerModal');
-            } catch (error) {
-                alert('Registration failed: ' + error.message);
-            }
-        });
-
-        // --- APP INITIALIZATION ---
-        window.addEventListener('load', async () => {
-            const { data: { session } } = await supabase.auth.getSession();
-            if (session) {
-                currentUser = session.user;
-                console.log('Active session found for:', currentUser.email);
-            } else {
-                console.log('No active session.');
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
             }
         });
     </script>
 </body>
 </html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDru1tn7JBm%2FESUjY9ghnue4aNj%2B8xIugWwGti3A6nQKRu7jZcWVm2vgvR8mwyOf8tFuJFWoldhjk1B0FlXcVn7k%2FPOFqJvlpoi6XORTTd9y9OlBTTiT98o5dGUsydhcPROm8hseWyx41tG6YVyjIg%2FAo7Qs4GYKGrATjhPwYw1OKbLqYvq%2FTdv3NQ9ObSIxj14nQafAUxn%2BJfrrv1GELmbtGsCX6M2t603UuGX6sv70WmIR1aF1KRyZ7w92fSJ%2Frkz5%2BaNKMkfoaCsVdakSTQg%2F5qLLPPwbW1RKTFgNHXkszrq4mxcWBXMDDHh%2BYM7AnKfvU6V51%2F9W%2FgqOkDz46kTHWxYltVyT8%2FshezBWQ2D733oz6x1VyAI2f%2BqIg3R0nJtu0mFmXcjIraQd1eJIhYrDBqhqTaLVYNKZPbdEauQcyhsD5KtPNGuVWf7FcSphY1wJYrzr%2F7TRm4MoZaag0pfcflcO3deiIVHA0VIcvpAKSgkG96FsQI3Y69KOL8QNMwHjJV9a%2FwOtFUZJ2mp89hmbldnP9jwH8ZWqAsF67%2BORm";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDru1tn7JBm/ESUjY9ghnue4aNj+8xIugWwGti3A6nQKRu7jZcWVm2vgvR8mwyOf8tFuJFWoldhjk1B0FlXcVn7k/POFqJvlpoi6XORTTd9y9OlBTTiT98o5dGUsydhcPROm8hseWyx41tG6YVyjIg/Ao7Qs4GYKGrATjhPwYw1OKbLqYvq/Tdv3NQ9ObSIxj14nQafAUxn+Jfrrv1GELmbtGsCX6M2t603UuGX6sv70WmIR1aF1KRyZ7w92fSJ/rkz5+aNKMkfoaCsVdakSTQg/5qLLPPwbW1RKTFgNHXkszrq4mxcWBXMDDHh+YM7AnKfvU6V51/9W/gqOkDz46kTHWxYltVyT8/shezBWQ2D733oz6x1VyAI2f+qIg3R0nJtu0mFmXcjIraQd1eJIhYrDBqhqTaLVYNKZPbdEauQcyhsD5KtPNGuVWf7FcSphY1wJYrzr/7TRm4MoZaag0pfcflcO3deiIVHA0VIcvpAKSgkG96FsQI3Y69KOL8QNMwHjJV9a/wOtFUZJ2mp89hmbldnP9jwH8ZWqAsF67+ORm";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
