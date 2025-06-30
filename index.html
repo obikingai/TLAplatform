@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triad Longevity Academy - Your Complete Health Transformation</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;line-height:1.6;color:#1f2937}
+        .gradient-bg{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}
+        .card-hover{transition:all 0.3s ease;transform:translateY(0)}
+        .card-hover:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,0.15)}
+        .btn-primary{background:linear-gradient(45deg,#667eea,#764ba2);transition:all 0.3s ease}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(102,126,234,0.4)}
+        .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.8);overflow-y:auto}
+        .modal-content{background:#fff;margin:2% auto;padding:2rem;border-radius:1rem;width:90%;max-width:600px;max-height:90vh;overflow-y:auto}
+        .close{color:#aaa;float:right;font-size:28px;font-weight:bold;cursor:pointer;width:30px;height:30px;text-align:center;line-height:28px}
+        .close:hover{color:#000}
+        .score-circle{width:100px;height:100px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.25rem;font-weight:bold;color:white;margin:1rem auto}
+        .excellent{background:#10b981}.good{background:#f59e0b;color:#1f2937}.needs-improvement{background:#ef4444}
+        .assessment-option{transition:all 0.3s ease;cursor:pointer}
+        .assessment-option:hover{background:#f3f4f6;transform:translateX(4px)}
+        .assessment-option input[type="radio"]{width:18px;height:18px}
+        .lazy-load{opacity:0;transition:opacity 0.3s ease}
+        .lazy-load.loaded{opacity:1}
+        @media (max-width:768px){.hero-title{font-size:2rem}.modal-content{margin:5% auto;padding:1.5rem;width:95%}}
+        .loading{animation:pulse 2s infinite}
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <img src="https://page1.genspark.site/v1/base64_upload/821b5c769d2fa4172a2430f17d958b18" alt="Logo" class="w-12 h-12 rounded-full lazy-load">
+                <h1 class="text-xl font-bold text-gray-800">Triad Longevity Academy</h1>
+            </div>
+            <div class="flex space-x-3">
+                <button onclick="showLogin()" class="hidden md:block px-4 py-2 border border-purple-600 text-purple-600 rounded-full hover:bg-purple-600 hover:text-white transition-all">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                </button>
+                <button onclick="startAssessment()" class="btn-primary text-white px-6 py-2 rounded-full font-semibold">
+                    <i class="fas fa-chart-line mr-2"></i>Start Assessment
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="hero-title text-4xl md:text-5xl font-bold mb-6">Your Complete Health Transformation</h2>
+            <p class="text-xl md:text-2xl mb-8 max-w-4xl mx-auto opacity-95">Stop jumping between apps! Get personalized meal plans, exercise routines, meditation scripts, and complete health coaching - all in one platform.</p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <button onclick="startAssessment()" class="bg-white text-purple-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all">
+                    <i class="fas fa-play mr-2"></i>Start Your Health Assessment
+                </button>
+                <button onclick="showPricing()" class="border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-purple-600 transition-all">
+                    <i class="fas fa-tags mr-2"></i>View Plans
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">Everything You Need in One Place</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="text-4xl mb-4 text-center">🍽️</div>
+                    <h3 class="text-xl font-bold mb-4 text-center">Personalized Meal Plans</h3>
+                    <p class="text-gray-600 text-center">AI-generated nutrition plans tailored to your health goals, dietary preferences, and lifestyle.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="text-4xl mb-4 text-center">💪</div>
+                    <h3 class="text-xl font-bold mb-4 text-center">Custom Exercise Routines</h3>
+                    <p class="text-gray-600 text-center">Workout plans designed for your fitness level, available equipment, and time constraints.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                    <div class="text-4xl mb-4 text-center">🧘</div>
+                    <h3 class="text-xl font-bold mb-4 text-center">Meditation & Mindfulness</h3>
+                    <p class="text-gray-600 text-center">Guided meditation scripts and stress management techniques for mental wellness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="bg-gradient-to-r from-blue-50 to-purple-50 py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800">Meet Our Team Lead / Health Coach</h2>
+                    <p class="text-lg text-gray-600 mb-6">With over 36 years of medical expertise, Dr. Obinna Eleweanya has dedicated his career to helping people achieve optimal health through evidence-based lifestyle medicine.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-3"></i>Board-certified physician with decades of experience</li>
+                        <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-3"></i>Host of "Optimal Health Talk" podcast</li>
+                        <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-3"></i>Published author and health educator</li>
+                        <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-green-500 mr-3"></i>Specialist in longevity and lifestyle medicine</li>
+                    </ul>
+                    <a href="https://podcasts.apple.com/us/podcast/optimal-health-talk-with-dr-obinna/id1780125688" target="_blank" class="btn-primary text-white px-6 py-3 rounded-full inline-flex items-center">
+                        <i class="fas fa-podcast mr-2"></i>Listen to Podcast
+                    </a>
+                </div>
+                <div class="lg:w-1/2 text-center">
+                    <img src="https://page1.genspark.site/v1/base64_upload/b56f156b0d55899ebd32c095c9d255ab" alt="Dr. Obinna" class="w-64 h-64 md:w-80 md:h-80 rounded-full mx-auto shadow-2xl lazy-load">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 md:py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">Choose Your Health Journey</h2>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-2 border-gray-200 card-hover">
+                    <h3 class="text-xl font-bold text-center mb-4">Free Trial</h3>
+                    <div class="text-center mb-6">
+                        <span class="text-4xl font-bold text-purple-600">$0</span>
+                        <span class="text-gray-500">/7 days</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Basic health assessment</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Sample meal plan</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Basic exercise routine</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Community access</li>
+                    </ul>
+                    <button onclick="selectPlan('free')" class="w-full border-2 border-purple-600 text-purple-600 py-3 rounded-full font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                        Start Free Trial
+                    </button>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-xl border-2 border-purple-600 card-hover transform scale-105">
+                    <div class="bg-purple-600 text-white text-center py-2 px-4 rounded-full text-sm font-semibold mb-4 mx-auto w-fit">Most Popular</div>
+                    <h3 class="text-xl font-bold text-center mb-4">Basic Plan</h3>
+                    <div class="text-center mb-6">
+                        <span class="text-4xl font-bold text-purple-600">$9.97</span>
+                        <span class="text-gray-500">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Complete health assessments</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Personalized meal plans</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Custom exercise routines</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Meditation scripts</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Progress tracking</li>
+                    </ul>
+                    <button onclick="selectPlan('basic')" class="w-full btn-primary text-white py-3 rounded-full font-semibold">
+                        Get Started
+                    </button>
+                </div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-2 border-gray-200 card-hover">
+                    <h3 class="text-xl font-bold text-center mb-4">Premium Plan</h3>
+                    <div class="text-center mb-6">
+                        <span class="text-4xl font-bold text-purple-600">$19.97</span>
+                        <span class="text-gray-500">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Everything in Basic</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>AI health coaching</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Priority support</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Advanced analytics</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i>Direct access to Dr. Obinna</li>
+                    </ul>
+                    <button onclick="selectPlan('premium')" class="w-full btn-primary text-white py-3 rounded-full font-semibold">
+                        Go Premium
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Assessment Modal -->
+    <div id="assessmentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="assessmentContent">
+                <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Health Assessment</h2>
+                <div id="assessmentForm"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">Sign In</h2>
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                    <input type="password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                </div>
+                <button type="submit" class="w-full btn-primary text-white py-3 rounded-lg font-semibold">Sign In</button>
+                <p class="text-center text-sm text-gray-600">
+                    Don't have an account? <a href="#" onclick="showRegister()" class="text-purple-600 hover:underline">Register here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="paymentContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentAssessment = '';
+        let assessmentScores = { mouth: 0, muscle: 0, mind: 0 };
+
+        // Assessment questions
+        const assessmentQuestions = {
+            mouth: [
+                {
+                    question: "How would you rate your current eating habits?",
+                    options: [
+                        { text: "Excellent - I eat nutritious meals regularly", score: 4 },
+                        { text: "Good - I try to eat healthy most of the time", score: 3 },
+                        { text: "Fair - I eat healthy sometimes", score: 2 },
+                        { text: "Poor - I rarely eat healthy foods", score: 1 }
+                    ]
+                },
+                {
+                    question: "How often do you eat processed foods?",
+                    options: [
+                        { text: "Rarely or never", score: 4 },
+                        { text: "Once or twice per week", score: 3 },
+                        { text: "Several times per week", score: 2 },
+                        { text: "Daily", score: 1 }
+                    ]
+                },
+                {
+                    question: "How much water do you drink daily?",
+                    options: [
+                        { text: "8+ glasses per day", score: 4 },
+                        { text: "6-7 glasses per day", score: 3 },
+                        { text: "4-5 glasses per day", score: 2 },
+                        { text: "Less than 4 glasses per day", score: 1 }
+                    ]
+                }
+            ],
+            muscle: [
+                {
+                    question: "How often do you exercise per week?",
+                    options: [
+                        { text: "5+ times per week", score: 4 },
+                        { text: "3-4 times per week", score: 3 },
+                        { text: "1-2 times per week", score: 2 },
+                        { text: "Rarely or never", score: 1 }
+                    ]
+                },
+                {
+                    question: "How would you rate your current fitness level?",
+                    options: [
+                        { text: "Excellent - Very fit and strong", score: 4 },
+                        { text: "Good - Moderately fit", score: 3 },
+                        { text: "Fair - Somewhat out of shape", score: 2 },
+                        { text: "Poor - Very out of shape", score: 1 }
+                    ]
+                },
+                {
+                    question: "How much time do you spend sitting per day?",
+                    options: [
+                        { text: "Less than 4 hours", score: 4 },
+                        { text: "4-6 hours", score: 3 },
+                        { text: "6-8 hours", score: 2 },
+                        { text: "More than 8 hours", score: 1 }
+                    ]
+                }
+            ],
+            mind: [
+                {
+                    question: "How would you rate your stress levels?",
+                    options: [
+                        { text: "Low - I manage stress very well", score: 4 },
+                        { text: "Moderate - I handle stress fairly well", score: 3 },
+                        { text: "High - I often feel stressed", score: 2 },
+                        { text: "Very high - I'm constantly stressed", score: 1 }
+                    ]
+                },
+                {
+                    question: "How many hours of quality sleep do you get per night?",
+                    options: [
+                        { text: "7-9 hours consistently", score: 4 },
+                        { text: "6-7 hours most nights", score: 3 },
+                        { text: "5-6 hours most nights", score: 2 },
+                        { text: "Less than 5 hours", score: 1 }
+                    ]
+                },
+                {
+                    question: "How often do you practice mindfulness or meditation?",
+                    options: [
+                        { text: "Daily", score: 4 },
+                        { text: "Several times per week", score: 3 },
+                        { text: "Occasionally", score: 2 },
+                        { text: "Never", score: 1 }
+                    ]
+                }
+            ]
+        };
+
+        // Lazy loading for images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('.lazy-load');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+            lazyImages.forEach(img => imageObserver.observe(img));
+        });
+
+        // Modal functions
+        function showModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
+            document.body.style.overflow = 'auto';
+        }
+
+        function showLogin() {
+            showModal('loginModal');
+        }
+
+        function showPricing() {
+            document.getElementById('pricing').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function startAssessment() {
+            currentAssessment = 'mouth';
+            loadAssessment('mouth');
+            showModal('assessmentModal');
+        }
+
+        function loadAssessment(type) {
+            const questions = assessmentQuestions[type];
+            const typeNames = { mouth: 'Nutrition', muscle: 'Fitness', mind: 'Wellness' };
+            const icons = { mouth: '🍽️', muscle: '💪', mind: '🧘' };
+            
+            const formHtml = `
+                <div class="text-center mb-6">
+                    <div class="text-4xl mb-3">${icons[type]}</div>
+                    <h3 class="text-xl font-bold text-purple-600">${typeNames[type]} Assessment</h3>
+                </div>
+                ${questions.map((q, index) => `
+                    <div class="bg-gray-50 p-6 rounded-xl mb-6">
+                        <div class="font-semibold mb-4 text-gray-800">${q.question}</div>
+                        <div class="space-y-3">
+                            ${q.options.map((option, optIndex) => `
+                                <label class="assessment-option flex items-center p-3 bg-white rounded-lg border border-gray-200">
+                                    <input type="radio" name="q${index}" value="${option.score}" required class="mr-3">
+                                    <span class="text-gray-700">${option.text}</span>
+                                </label>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('')}
+                <div class="text-center mt-8">
+                    <button type="button" onclick="submitAssessment('${type}')" class="btn-primary text-white px-8 py-3 rounded-full font-semibold">
+                        ${type === 'mind' ? '<i class="fas fa-check mr-2"></i>Complete Assessment' : `Next: ${type === 'mouth' ? 'Fitness' : 'Wellness'} <i class="fas fa-arrow-right ml-2"></i>`}
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('assessmentForm').innerHTML = formHtml;
+        }
+
+        function submitAssessment(type) {
+            const questions = document.querySelectorAll(`input[name^="q"]:checked`);
+            if (questions.length < assessmentQuestions[type].length) {
+                alert('Please answer all questions before proceeding.');
+                return;
+            }
+
+            let score = 0;
+            questions.forEach(q => score += parseInt(q.value));
+            assessmentScores[type] = Math.round((score / (assessmentQuestions[type].length * 4)) * 100);
+
+            if (type === 'mouth') {
+                loadAssessment('muscle');
+            } else if (type === 'muscle') {
+                loadAssessment('mind');
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            const resultsHtml = `
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">Your Health Assessment Results</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="text-center">
+                            <h4 class="font-semibold mb-2">Nutrition</h4>
+                            <div class="score-circle ${getScoreClass(assessmentScores.mouth)}">
+                                ${assessmentScores.mouth}%
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h4 class="font-semibold mb-2">Fitness</h4>
+                            <div class="score-circle ${getScoreClass(assessmentScores.muscle)}">
+                                ${assessmentScores.muscle}%
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <h4 class="font-semibold mb-2">Wellness</h4>
+                            <div class="score-circle ${getScoreClass(assessmentScores.mind)}">
+                                ${assessmentScores.mind}%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl mb-6">
+                        <h3 class="font-bold mb-4 text-gray-800">Your Personalized Recommendations</h3>
+                        <div id="recommendations" class="text-left">
+                            <div class="flex items-center justify-center">
+                                <div class="loading">
+                                    <i class="fas fa-spinner fa-spin mr-2"></i>Generating your personalized health plan...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row gap-4 justify-center">
+                        <button onclick="generatePersonalizedPlan()" class="btn-primary text-white px-6 py-3 rounded-full font-semibold">
+                            <i class="fas fa-magic mr-2"></i>Get My Complete Plan
+                        </button>
+                        <button onclick="selectPlan('basic')" class="border-2 border-purple-600 text-purple-600 px-6 py-3 rounded-full font-semibold hover:bg-purple-600 hover:text-white transition-all">
+                            <i class="fas fa-rocket mr-2"></i>Upgrade to Premium
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('assessmentContent').innerHTML = resultsHtml;
+            setTimeout(generatePersonalizedPlan, 1500);
+        }
+
+        function getScoreClass(score) {
+            if (score >= 80) return 'excellent';
+            if (score >= 60) return 'good';
+            return 'needs-improvement';
+        }
+
+        async function generatePersonalizedPlan() {
+            const recommendationsDiv = document.getElementById('recommendations');
+            if (!recommendationsDiv) return;
+            
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            const { mouth, muscle, mind } = assessmentScores;
+            let recommendations = '<div class="space-y-4">';
+            
+            // Nutrition recommendations
+            if (mouth < 70) {
+                recommendations += `
+                    <div class="text-left">
+                        <h4 class="font-semibold text-purple-600 mb-2">🍽️ Nutrition Plan:</h4>
+                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                            <li>Focus on whole foods: vegetables, fruits, lean proteins</li>
+                            <li>Increase water intake to 8-10 glasses per day</li>
+                            <li>Reduce processed foods and sugar intake</li>
+                            <li>Consider meal prep on Sundays for the week ahead</li>
+                        </ul>
+                    </div>
+                `;
+            } else {
+                recommendations += `
+                    <div class="text-left">
+                        <h4 class="font-semibold text-purple-600 mb-2">🍽️ Nutrition Plan:</h4>
+                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                            <li>Excellent eating habits! Continue your current approach</li>
+                            <li>Consider adding more variety with seasonal foods</li>
+                            <li>Focus on optimal timing of meals for energy</li>
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            // Fitness recommendations
+            if (muscle < 70) {
+                recommendations += `
+                    <div class="text-left">
+                        <h4 class="font-semibold text-purple-600 mb-2">💪 Exercise Plan:</h4>
+                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                            <li>Start with 20-30 minutes of activity 3-4 times per week</li>
+                            <li>Include both cardio and strength training</li>
+                            <li>Take regular movement breaks throughout the day</li>
+                            <li>Begin with bodyweight exercises at home</li>
+                        </ul>
+                    </div>
+                `;
+            } else {
+                recommendations += `
+                    <div class="text-left">
+                        <h4 class="font-semibold text-purple-600 mb-2">💪 Exercise Plan:</h4>
+                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                            <li>Great fitness level! Focus on progressive overload</li>
+                            <li>Add variety with new training modalities</li>
+                            <li>Include recovery and mobility work</li>
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            // Wellness recommendations
+            if (mind < 70) {
+                recommendations += `
+                    <div class="text-left">
+                        <h4 class="font-semibold text-purple-600 mb-2">🧘 Wellness Plan:</h4>
+                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                            <li>Practice 5-10 minutes of daily meditation</li>
+                            <li>Establish a consistent sleep schedule</li>
+                            <li>Try stress-reduction techniques like deep breathing</li>
+                            <li>Consider journaling for mental clarity</li>
+                        </ul>
+                    </div>
+                `;
+            } else {
+                recommendations += `
+                    <div class="text-left">
+                        <h4 class="font-semibold text-purple-600 mb-2">🧘 Wellness Plan:</h4>
+                        <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                            <li>Excellent mental wellness! Maintain your practices</li>
+                            <li>Consider advanced mindfulness techniques</li>
+                            <li>Share your wellness knowledge with others</li>
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            recommendations += '</div>';
+            recommendationsDiv.innerHTML = recommendations;
+        }
+
+        function selectPlan(plan) {
+            const plans = {
+                free: { name: 'Free Trial', price: 0, duration: '7 days' },
+                basic: { name: 'Basic Plan', price: 9.97, duration: 'month' },
+                premium: { name: 'Premium Plan', price: 19.97, duration: 'month' }
+            };
+            
+            const selectedPlan = plans[plan];
+            
+            if (plan === 'free') {
+                alert('🎉 Welcome to your free trial! You now have access to basic features for 7 days.');
+                closeModal();
+                return;
+            }
+            
+            // Create payment form
+            const paymentHtml = `
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-800">Complete Your Purchase</h2>
+                    <div class="bg-gradient-to-r from-purple-500 to-blue-500 text-white p-6 rounded-xl mb-6">
+                        <h3 class="text-xl font-bold">${selectedPlan.name}</h3>
+                        <p class="text-3xl font-bold">$${selectedPlan.price}<span class="text-lg">/${selectedPlan.duration}</span></p>
+                    </div>
+                    
+                    <form id="payment-form" class="space-y-4">
+                        <div class="text-left">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                        </div>
+                        <div class="text-left">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                            <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                        </div>
+                        <div class="text-left">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
+                            <input type="text" placeholder="1234 5678 9012 3456" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-left">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Expiry Date</label>
+                                <input type="text" placeholder="MM/YY" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            <div class="text-left">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">CVC</label>
+                                <input type="text" placeholder="123" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500">
+                            </div>
+                        </div>
+                        <button type="submit" class="w-full btn-primary text-white py-3 rounded-lg font-semibold mt-6">
+                            <i class="fas fa-lock mr-2"></i>Complete Purchase - $${selectedPlan.price}
+                        </button>
+                    </form>
+                    <p class="text-xs text-gray-500 mt-4">
+                        <i class="fas fa-shield-alt mr-1"></i>Your payment information is secure and encrypted
+                    </p>
+                </div>
+            `;
+            
+            document.getElementById('paymentContent').innerHTML = paymentHtml;
+            closeModal();
+            showModal('paymentModal');
+            
+            // Add form submission handler
+            document.getElementById('payment-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('🎉 Payment successful! Welcome to your new health journey!');
+                closeModal();
+            });
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal();
+            }
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+    <script id="html_badge_script1">
+        window.__genspark_remove_badge_link = "https://www.genspark.ai/api/html_badge/" +
+            "remove_badge?token=To%2FBnjzloZ3UfQdcSaYfDrMYnPB5%2FsCffoVXEq01L2zXERnySFv5Impu63HNzb2tfKgA0VQh75JmbmTaHklL2sL7JT%2Fb30SgzPkyTrjZWQoZ%2BqtrrsMwq9y3jrSzOccu2fIUdU9S3nErJXjiXPc7cqFmKk561154UAG3jqkreaUpk4MNWSaAkwn9LcSlvFHTv8Yu%2BKoB1D3A1g0JFr3pMMnRysHhMbtMFMECt5fH2e4tXqRcRfMC%2F3qBCr1lXk7oUUz862ZHzvaUBFsOczsvSHEVl9oc1uYIP%2Fv90gLzeBFvaXCjxg%2Byx%2BSqMQ3ZVnh1gYFMZAQmFelWcgbKqZ4IugWN%2BfQ9NLfNK%2FAUiU42SA1fz9GzwdCFN2uyL63gpAYz9acnh0T2F1dj%2FAEDIzA9zDV9ghv8F9uXfwZcKr3YuifamAuCtdMq6iwFQfVzMYKUC6mNHPOXlCz7TV1noxhib3jGSMu%2BpO8q4gjcdRCC%2B83mEw8vIN7h%2Br%2BiSQAO8T5h78%2BTN2dM4EkaHqzIw%2Bk%2BPbqbT8p%2Fth7%2BtofdF0BGrbM%3D";
+        window.__genspark_locale = "en-US";
+        window.__genspark_token = "To/BnjzloZ3UfQdcSaYfDrMYnPB5/sCffoVXEq01L2zXERnySFv5Impu63HNzb2tfKgA0VQh75JmbmTaHklL2sL7JT/b30SgzPkyTrjZWQoZ+qtrrsMwq9y3jrSzOccu2fIUdU9S3nErJXjiXPc7cqFmKk561154UAG3jqkreaUpk4MNWSaAkwn9LcSlvFHTv8Yu+KoB1D3A1g0JFr3pMMnRysHhMbtMFMECt5fH2e4tXqRcRfMC/3qBCr1lXk7oUUz862ZHzvaUBFsOczsvSHEVl9oc1uYIP/v90gLzeBFvaXCjxg+yx+SqMQ3ZVnh1gYFMZAQmFelWcgbKqZ4IugWN+fQ9NLfNK/AUiU42SA1fz9GzwdCFN2uyL63gpAYz9acnh0T2F1dj/AEDIzA9zDV9ghv8F9uXfwZcKr3YuifamAuCtdMq6iwFQfVzMYKUC6mNHPOXlCz7TV1noxhib3jGSMu+pO8q4gjcdRCC+83mEw8vIN7h+r+iSQAO8T5h78+TN2dM4EkaHqzIw+k+PbqbT8p/th7+tofdF0BGrbM=";
+    </script>
+    
+    <script id="html_notice_dialog_script" src="https://www.genspark.ai/notice_dialog.js"></script>
+    
